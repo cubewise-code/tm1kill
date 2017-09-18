@@ -1,0 +1,4 @@
+TM1Kill/obj/*
+TM1Kill/bin/*
+.vs/
+*.csproj.user
