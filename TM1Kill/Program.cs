@@ -236,9 +236,34 @@ namespace cubewise.code
                     List<TopItem> toDisconnect = GetUsersToDisconnect(items, sUserName);
                     if(toDisconnect.Count > 0)
                     {
+                        // Get the }Clients dimension to get the principal element name
+                        TM1V hClientsDim = API.TM1ObjectListHandleByNameGet(hPool, hServer, API.TM1ServerDimensions(), API.TM1ValString(hPool, "}Clients", 0));
+                        if (API.TM1ValType(hUser, hClientsDim) == API.TM1ValTypeError())
+                        {
+                            Console.WriteLine("Unable to retrieve }Clients dimension from server: " + API.TM1ValErrorString(hUser, hClientsDim));
+                            return;
+                        }
                         foreach (TopItem item in toDisconnect)
                         {
-                            bool result = DisconnectUser(hUser, hPool, hServer, item.UserName);
+                            String client = item.UserName;
+                            TM1V hElement = API.TM1ObjectListHandleByNameGet(hPool, hClientsDim, API.TM1DimensionElements(), API.TM1ValString(hPool, client, 0));
+                            if (API.TM1ValType(hUser, hElement) == API.TM1ValTypeError())
+                            {
+                                Console.WriteLine("Unable to get user " + client + " from }Clients dimension: " + API.TM1ValErrorString(hUser, hElement));
+                            }
+                            else
+                            {
+                                TM1V hName = API.TM1ObjectPropertyGet(hPool, hElement, API.TM1ObjectName());
+                                if (API.TM1ValType(hUser, hName) == API.TM1ValTypeError())
+                                {
+                                    Console.WriteLine("Unable to get element name for user " + client + ": " + API.TM1ValErrorString(hUser, hName));
+                                } else
+                                {
+                                    client = API.TM1ValStringGet(hUser, hName);
+                                }
+                            }
+                            
+                            bool result = DisconnectUser(hUser, hPool, hServer, client);
                             if (result)
                             {
                                 Console.WriteLine(" User {0} has been disconnected", item.UserName);

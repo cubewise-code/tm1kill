@@ -40,11 +40,20 @@ namespace cubewise.code
         [DllImport("tm1api.dll")]
         public static extern TM1V TM1ValType(TM1V hUser, TM1V Value);
         [DllImport("tm1api.dll")]
+        public static extern TM1V TM1ServerDimensions();
+        [DllImport("tm1api.dll")]
+        public static extern TM1V TM1DimensionElements();
+        [DllImport("tm1api.dll")]
+        public static extern TM1V TM1ObjectName();
+        [DllImport("tm1api.dll")]
+        public static extern TM1V TM1ObjectListHandleByNameGet(TM1V hPool, TM1V hObject, TM1V objectType, TM1V objectName);
+        [DllImport("tm1api.dll")]
+        public static extern TM1V TM1ObjectPropertyGet(TM1V hPool, TM1V hObject, TM1V objectProperty);
+        [DllImport("tm1api.dll")]
         public static extern TM1V TM1SystemServerConnect(TM1V hPool, TM1V sServer, TM1V sClient, TM1V sPassword);
         [DllImport("tm1api.dll")]
-        public static extern TM1V TM1SystemServerConnectWithCAMNamespace(TM1V hPool, TM1V sServer, TM1V vCAMArgArra);
+        public static extern TM1V TM1SystemServerConnectWithCAMNamespace(TM1V hPool, TM1V sServer, TM1V vCAMArgArray);
         [DllImport("tm1api.dll")]
-
         public static extern TM1V TM1ValIndex(TM1V hPool, uint ArrayIndex);
         [DllImport("tm1api.dll", EntryPoint = "TM1ValStringGet")]
         static extern IntPtr TM1ValStringGetPointer(TM1V hUser, TM1V vString);
