@@ -121,7 +121,6 @@ namespace cubewise.code
 
                 Console.WriteLine("Starting with settings:");
                 Console.WriteLine(" Username: " + sUserName);
-                Console.WriteLine(" Password: " + sPassword);
                 Console.WriteLine(" AdminHost: " + sAdminHost);
                 Console.WriteLine(" Server: " + sServer);
                 Console.WriteLine(" Cancel: " + bCancel);
