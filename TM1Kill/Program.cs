@@ -138,7 +138,7 @@ namespace cubewise.code
                 Console.WriteLine("Attempting to connect to server");
                 API.TM1SystemAdminHostSet(hUser, sAdminHost);
 
-                    TM1V hServer;
+                TM1V hServer;
                 if (bCAMNamespace)
                 {
                     TM1V[] hArgs = new TM1V[3];
