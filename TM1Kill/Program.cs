@@ -134,7 +134,7 @@ namespace cubewise.code
                 hUser = API.TM1SystemOpen();
                 hPool = API.TM1ValPoolCreate(hUser);
 
-                Console.WriteLine("Attempting to connect to server");
+                Console.WriteLine("Setting API admin host to {0}", sAdminHost);
                 API.TM1SystemAdminHostSet(hUser, sAdminHost);
 
                 TM1V hServer;
@@ -166,6 +166,8 @@ namespace cubewise.code
                 // Connect to TM1 TOP API
                 hTop = API.TM1SystemOpen();
                 hTopPool = API.TM1ValPoolCreate(hTop);
+                Console.WriteLine("Setting Top API admin host to {0}", sAdminHost);
+                API.TM1SystemAdminHostSet(hUser, sAdminHost);
                 TM1V hConnection = API.TM1TopConnect(hTopPool, API.TM1ValString(hTopPool, sServer, 0));
                 if (API.TM1ValType(hTop, hConnection) != API.TM1ValTypeObject())
                 {
