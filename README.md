@@ -4,7 +4,7 @@
 The program is written using C# and runs on the .NET framework 2.0 or later. All communication with TM1 is through the `C API`, if you are interested in understanding how the `C API` works in TM1 this is a good example.
 
 ## Setup
-For the program to run it must be know the location of tm1api.dll (64 bit), you can either:
+For the program to run, it must know the location of tm1api.dll (64 bit), you can either:
 1. Add tm1kill.exe to the TM1 64 bit bin directory, i.e. C:\Program Files\ibm\cognos\tm1_64\bin64
 2. Add the TM1 64 bit bin directory (C:\Program Files\ibm\cognos\tm1_64\bin64) to your PATH system variable.
 3. Add the TM1 64 bit bin directory (C:\Program Files\ibm\cognos\tm1_64\bin64) to your PATH in a batch file.
@@ -29,4 +29,4 @@ You must pass **-CANCEL** or **-DISCONNECT** or both. If you pass both arguments
 
 ## Download
 
-To download the executable go to the release page: https://github.com/cubewise-code/tm1kill/releases
+To download the executable go to the release page: https://code.cubewise.com/tm1kill
