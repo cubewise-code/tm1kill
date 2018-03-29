@@ -104,6 +104,8 @@ namespace cubewise.code
                     }
                 }
 
+                Console.WriteLine("TM1Kill v1.2");
+
                 if (bUserName == false | bPassword == false | bServer == false | bAdminHost == false)
                 {
                     Console.WriteLine("You must provide an -ADMINHOST, -SERVER, -USERNAME and -PASSWORD");
@@ -167,7 +169,7 @@ namespace cubewise.code
                 hTop = API.TM1SystemOpen();
                 hTopPool = API.TM1ValPoolCreate(hTop);
                 Console.WriteLine("Setting Top API admin host to {0}", sAdminHost);
-                API.TM1SystemAdminHostSet(hUser, sAdminHost);
+                API.TM1SystemAdminHostSet(hTop, sAdminHost);
                 TM1V hConnection = API.TM1TopConnect(hTopPool, API.TM1ValString(hTopPool, sServer, 0));
                 if (API.TM1ValType(hTop, hConnection) != API.TM1ValTypeObject())
                 {
